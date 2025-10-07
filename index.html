@@ -17,7 +17,6 @@
                     <i class="fas fa-chart-line"></i>
                     Simulación de Algoritmos Estocásticos
                 </h1>
-                <p class="subtitle">Herramientas avanzadas para análisis financiero y modelado estocástico</p>
             </div>
         </header>
 
@@ -31,6 +30,22 @@
                 <button class="nav-tab" data-tab="variable-deposit">
                     <i class="fas fa-chart-bar"></i>
                     Depósito a Plazo Variable
+                </button>
+                <button class="nav-tab" data-tab="dice-game">
+                    <i class="fas fa-dice"></i>
+                    Juego de Dados
+                </button>
+                <button class="nav-tab" data-tab="customer-arrival">
+                    <i class="fas fa-users"></i>
+                    Llegada de Clientes
+                </button>
+                <button class="nav-tab" data-tab="farmer-simulation">
+                    <i class="fas fa-egg"></i>
+                    Simulación Granjero
+                </button>
+                <button class="nav-tab" data-tab="inventory-simulation">
+                    <i class="fas fa-boxes"></i>
+                    Inventario de Azúcar
                 </button>
             </div>
         </nav>
@@ -204,11 +219,424 @@
                     </div>
                 </div>
             </section>
+
+            <!-- Dice Game Section -->
+            <section id="dice-game" class="simulation-section">
+                <div class="section-header">
+                    <h2>Juego de Dados</h2>
+                    <p>Simula un juego de casino donde la casa gana si la suma de dos dados no es 7</p>
+                </div>
+                
+                <div class="simulation-container">
+                    <div class="form-container">
+                        <form id="dice-game-form" class="simulation-form">
+                            <div class="form-group">
+                                <label for="max-games">
+                                    <i class="fas fa-gamepad"></i>
+                                    Número Máximo de Juegos (NMJ) - Juegos
+                                </label>
+                                <input type="number" id="max-games" name="maxGames" min="1" max="10000" value="100" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="game-price">
+                                    <i class="fas fa-coins"></i>
+                                    Precio Unitario Juego (PUJ) - Bs/juego
+                                </label>
+                                <input type="number" id="game-price" name="gamePrice" step="0.01" min="0" value="2" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="cost-sum-7">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    Costo Unitario si Dados Suman 7 (CUS7) - Bs/juego
+                                </label>
+                                <input type="number" id="cost-sum-7" name="costSum7" step="0.01" min="0" value="5" required>
+                            </div>
+                            
+                            <button type="submit" class="simulate-btn">
+                                <i class="fas fa-play"></i>
+                                Simular
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="results-container">
+                        <div class="results-card">
+                            <h3>Resultados de la Simulación</h3>
+                            <div class="result-item">
+                                <span class="result-label">Ganancia Neta Casa (GNC):</span>
+                                <span class="result-value" id="dice-net-gain">Bs. 0.00</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">N° Juegos Gana Casa (NJGC):</span>
+                                <span class="result-value" id="dice-house-wins">0 Juegos</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Porcentaje Juegos Casa (PJC):</span>
+                                <span class="result-value" id="dice-house-percentage">0.00%</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">N° Juegos Gana Jugador:</span>
+                                <span class="result-value" id="dice-player-wins">0 Juegos</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Porcentaje Juegos Jugador:</span>
+                                <span class="result-value" id="dice-player-percentage">0.00%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="table-container">
+                            <div class="table-header">
+                                <h4>Detalle de Lanzamientos</h4>
+                            </div>
+                            <div class="table-wrapper">
+                                <table id="dice-table" class="results-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Juego</th>
+                                            <th>Dado 1</th>
+                                            <th>Dado 2</th>
+                                            <th>Suma</th>
+                                            <th>Ganador</th>
+                                            <th>Ganancia Casa</th>
+                                            <th>Ganancia Acumulada</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Los datos se llenarán dinámicamente -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Customer Arrival Section -->
+            <section id="customer-arrival" class="simulation-section">
+                <div class="section-header">
+                    <h2>Llegada de Clientes</h2>
+                    <p>Simula el funcionamiento de una tienda con llegada aleatoria de clientes y compra de artículos</p>
+                </div>
+                
+                <div class="simulation-container">
+                    <div class="form-container">
+                        <form id="customer-arrival-form" class="simulation-form">
+                            <div class="form-group">
+                                <label for="days-to-simulate">
+                                    <i class="fas fa-calendar-days"></i>
+                                    Número de Días a Simular
+                                </label>
+                                <input type="number" id="days-to-simulate" name="daysToSimulate" min="1" max="365" value="1" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="max-hours">
+                                    <i class="fas fa-clock"></i>
+                                    Número Máximo Horas (NMH) - Horas
+                                </label>
+                                <input type="number" id="max-hours" name="maxHours" min="1" max="24" value="8" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="fixed-cost">
+                                    <i class="fas fa-building"></i>
+                                    Costo Fijo Diario (CF) - Bs/40hr
+                                </label>
+                                <input type="number" id="fixed-cost" name="fixedCost" step="0.01" min="0" value="300" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="acquisition-cost">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    Costo Unitario Adquisición (CUA) - Bs/Art
+                                </label>
+                                <input type="number" id="acquisition-cost" name="acquisitionCost" step="0.01" min="0" value="50" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="sale-price">
+                                    <i class="fas fa-tag"></i>
+                                    Precio Venta Unitario (PVU) - Bs/Art
+                                </label>
+                                <input type="number" id="sale-price" name="salePrice" step="0.01" min="0" value="75" required>
+                            </div>
+                            
+                            <button type="submit" class="simulate-btn">
+                                <i class="fas fa-play"></i>
+                                Simular
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="results-container">
+                        <div class="results-card">
+                            <h3>Resultados de la Simulación</h3>
+                            <div class="result-item">
+                                <span class="result-label">Total Artículos Vendidos:</span>
+                                <span class="result-value" id="total-items-sold">0</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Ganancia Neta Total:</span>
+                                <span class="result-value" id="total-net-profit">Bs. 0.00</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Ganancia Promedio por Día:</span>
+                                <span class="result-value" id="avg-daily-profit">Bs. 0.00</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Total Clientes Atendidos:</span>
+                                <span class="result-value" id="total-customers">0</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Días con Ganancia:</span>
+                                <span class="result-value" id="profitable-days">0</span>
+                            </div>
+                        </div>
+                        
+                        <div class="table-container">
+                            <div class="table-header">
+                                <h4>Detalle por Día</h4>
+                            </div>
+                            <div class="table-wrapper">
+                                <table id="customer-table" class="results-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Día</th>
+                                            <th>Total Clientes</th>
+                                            <th>Artículos Vendidos</th>
+                                            <th>Ingresos</th>
+                                            <th>Costos Variables</th>
+                                            <th>Costo Fijo</th>
+                                            <th>Ganancia Neta</th>
+                                            <th>Estado</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Los datos se llenarán dinámicamente -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Farmer Simulation Section -->
+            <section id="farmer-simulation" class="simulation-section">
+                <div class="section-header">
+                    <h2>Simulación Granjero</h2>
+                    <p>Simula la producción de huevos y pollos de un granjero con distribución de Poisson</p>
+                </div>
+                
+                <div class="simulation-container">
+                    <div class="form-container">
+                        <form id="farmer-simulation-form" class="simulation-form">
+                            <div class="form-group">
+                                <label for="max-days">
+                                    <i class="fas fa-calendar-days"></i>
+                                    Número Máximo Días (NMD) - días
+                                </label>
+                                <input type="number" id="max-days" name="maxDays" min="1" max="365" value="30" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="egg-price">
+                                    <i class="fas fa-egg"></i>
+                                    Precio Unitario Venta Huevo (PVUH) - Bs/huevo
+                                </label>
+                                <input type="number" id="egg-price" name="eggPrice" step="0.01" min="0" value="1.50" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="chicken-price">
+                                    <i class="fas fa-drumstick-bite"></i>
+                                    Precio Venta Unitario Pollo (PVUP) - Bs/pollo
+                                </label>
+                                <input type="number" id="chicken-price" name="chickenPrice" step="0.01" min="0" value="5.00" required>
+                            </div>
+                            
+                            <button type="submit" class="simulate-btn">
+                                <i class="fas fa-play"></i>
+                                Simular
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="results-container">
+                        <div class="results-card">
+                            <h3>Resultados de la Simulación</h3>
+                            <div class="result-item">
+                                <span class="result-label">Ingreso Neto Total (IGT):</span>
+                                <span class="result-value" id="total-net-income">Bs. 0.00</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Ingreso Diario Promedio (IDP):</span>
+                                <span class="result-value" id="avg-daily-income">Bs. 0.00/día</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Total Huevos (TH):</span>
+                                <span class="result-value" id="total-eggs">0 huevos</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Total Pollos Sobreviven (TPS):</span>
+                                <span class="result-value" id="total-surviving-chickens">0 pollos</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Total Huevos Rotos (THR):</span>
+                                <span class="result-value" id="total-broken-eggs">0 huevos</span>
+                            </div>
+                        </div>
+                        
+                        <div class="table-container">
+                            <div class="table-header">
+                                <h4>Detalle por Día</h4>
+                            </div>
+                            <div class="table-wrapper">
+                                <table id="farmer-table" class="results-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Día</th>
+                                            <th>Huevos Puestos</th>
+                                            <th>Huevos Rotos</th>
+                                            <th>Pollos Nacidos</th>
+                                            <th>Pollos Sobreviven</th>
+                                            <th>Huevos Vendidos</th>
+                                            <th>Ingreso Diario</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Los datos se llenarán dinámicamente -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Inventory Simulation Section -->
+            <section id="inventory-simulation" class="simulation-section">
+                <div class="section-header">
+                    <h2>Inventario de Azúcar</h2>
+                    <p>Simula la gestión de inventario con demanda exponencial y tiempo de entrega uniforme</p>
+                </div>
+                
+                <div class="simulation-container">
+                    <div class="form-container">
+                        <form id="inventory-simulation-form" class="simulation-form">
+                            <div class="form-group">
+                                <label for="inventory-max-days">
+                                    <i class="fas fa-calendar-days"></i>
+                                    Número Máximo Días (NMD) - días
+                                </label>
+                                <input type="number" id="inventory-max-days" name="maxDays" min="1" max="365" value="60" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="warehouse-capacity">
+                                    <i class="fas fa-warehouse"></i>
+                                    Capacidad Bodega (CBOD) - Kg
+                                </label>
+                                <input type="number" id="warehouse-capacity" name="warehouseCapacity" step="0.01" min="0" value="700" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="reorder-cost">
+                                    <i class="fas fa-shopping-cart"></i>
+                                    Costo Reorden (CORD) - Bs
+                                </label>
+                                <input type="number" id="reorder-cost" name="reorderCost" step="0.01" min="0" value="100" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="inventory-unit-cost">
+                                    <i class="fas fa-box"></i>
+                                    Costo Inventario Unitario (CUI) - Bs/kgr
+                                </label>
+                                <input type="number" id="inventory-unit-cost" name="inventoryUnitCost" step="0.01" min="0" value="0.1" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="acquisition-unit-cost">
+                                    <i class="fas fa-dollar-sign"></i>
+                                    Costo Unitario Adquisición (CUA) - Bs/kg
+                                </label>
+                                <input type="number" id="acquisition-unit-cost" name="acquisitionUnitCost" step="0.01" min="0" value="3.5" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="sale-unit-price">
+                                    <i class="fas fa-tag"></i>
+                                    Precio Unitario Venta (PUV) - Bs/kg
+                                </label>
+                                <input type="number" id="sale-unit-price" name="saleUnitPrice" step="0.01" min="0" value="5.0" required>
+                            </div>
+                            
+                            <button type="submit" class="simulate-btn">
+                                <i class="fas fa-play"></i>
+                                Simular
+                            </button>
+                        </form>
+                    </div>
+                    
+                    <div class="results-container">
+                        <div class="results-card">
+                            <h3>Resultados de la Simulación</h3>
+                            <div class="result-item">
+                                <span class="result-label">Ingreso Bruto Total (IBRU):</span>
+                                <span class="result-value" id="total-gross-income">Bs. 0.00</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Costo Total (CTOT):</span>
+                                <span class="result-value" id="total-cost">Bs. 0.00</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Ganancia Neta (GNETA):</span>
+                                <span class="result-value" id="net-profit">Bs. 0.00</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Demanda Insatisfecha Total (DIT):</span>
+                                <span class="result-value" id="total-unsatisfied-demand">0.00 Kg</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Demanda Insatisfecha a los 27 días:</span>
+                                <span class="result-value" id="unsatisfied-demand-day27">0.00 Kg</span>
+                            </div>
+                        </div>
+                        
+                        <div class="table-container">
+                            <div class="table-header">
+                                <h4>Detalle por Día</h4>
+                            </div>
+                            <div class="table-wrapper">
+                                <table id="inventory-table" class="results-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Día</th>
+                                            <th>Inventario Inicial</th>
+                                            <th>Demanda</th>
+                                            <th>Pedido</th>
+                                            <th>Inventario Final</th>
+                                            <th>DI Acumulada</th>
+                                            <th>Costo Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Los datos se llenarán dinámicamente -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <!-- Footer -->
         <footer class="footer">
-            <p>&copy; 2024 Simulación de Algoritmos Estocásticos. Desarrollado con precisión matemática.</p>
+            <p>&copy; 2025 Franz Rodolfo Carvajal Barrera</p>
         </footer>
     </div>
 

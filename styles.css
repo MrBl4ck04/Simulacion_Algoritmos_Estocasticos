@@ -559,6 +559,84 @@ body {
     font-style: italic;
 }
 
+/* Dice Game Specific Styles */
+.results-table .dice-sum {
+    font-weight: 700;
+    font-size: var(--font-size-base);
+}
+
+.results-table .dice-sum-seven {
+    color: var(--warning-color);
+    background: rgba(245, 158, 11, 0.2);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-1) var(--spacing-2);
+    font-weight: 700;
+    border: 1px solid var(--warning-color);
+}
+
+.results-table .winner-cell {
+    font-weight: 600;
+    text-align: center;
+    padding: var(--spacing-2);
+    border-radius: var(--radius-sm);
+}
+
+.results-table .winner-cell.success {
+    color: var(--success-color);
+    background: rgba(16, 185, 129, 0.1);
+}
+
+.results-table .winner-cell.error {
+    color: var(--error-color);
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.results-table .number-cell.success {
+    color: var(--success-color);
+}
+
+.results-table .number-cell.error {
+    color: var(--error-color);
+}
+
+.summary-row {
+    background: var(--bg-tertiary);
+}
+
+.summary-cell {
+    text-align: center;
+    padding: var(--spacing-4);
+    color: var(--text-muted);
+    font-style: italic;
+    border-top: 2px solid var(--border-color);
+}
+
+.summary-cell i {
+    color: var(--accent-color);
+    margin-right: var(--spacing-2);
+}
+
+/* Customer Arrival Specific Styles */
+.results-table .status-cell {
+    font-weight: 600;
+    text-align: center;
+    padding: var(--spacing-2);
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.05em;
+}
+
+.results-table .status-cell.success {
+    color: var(--success-color);
+    background: rgba(16, 185, 129, 0.1);
+}
+
+.results-table .status-cell.error {
+    color: var(--error-color);
+    background: rgba(239, 68, 68, 0.1);
+}
+
 /* Footer */
 .footer {
     text-align: center;
